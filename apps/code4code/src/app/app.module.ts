@@ -2,6 +2,10 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 
+import { AkitaNgDevtools } from '@datorama/akita-ngdevtools';
+
+import { environment } from '../environments/environment';
+
 import { AppComponent } from './app.component';
 
 @NgModule({
@@ -20,6 +24,7 @@ import { AppComponent } from './app.component';
           import('./user/user.module').then((m) => m.UserModule),
       },
     ]),
+    environment.production ? [] : AkitaNgDevtools.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],
