@@ -27,6 +27,9 @@
     ]
   },
   "projects": {
+    "auth": {
+      "tags": []
+    },
     "code4code": {
       "tags": []
     },
