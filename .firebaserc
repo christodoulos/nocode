@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "gnosys-a54d2": {
+      "hosting": {
+        "code4code": [
+          "gnosys-a54d2"
+        ]
+      }
+    }
+  }
+}
