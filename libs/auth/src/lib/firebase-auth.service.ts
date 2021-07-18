@@ -21,7 +21,7 @@ export class FirebaseAuthService {
     });
   }
 
-  parseFirebaseUser(user: firebase.User) {
+  parseFirebaseUser(user: firebase.User): FirebaseUser {
     return {
       uid: user.uid,
       email: user.email,
