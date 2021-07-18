@@ -3,6 +3,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import firebase from 'firebase/app';
 
 import { FirebaseUser, FirebaseUserService } from './state';
+import { resetStores } from '@datorama/akita';
 
 @Injectable({
   providedIn: 'root',
@@ -35,5 +36,10 @@ export class FirebaseAuthService {
   async googleSignIn() {
     const provider = new firebase.auth.GoogleAuthProvider();
     await this.angularFireAuth.signInWithPopup(provider);
+  }
+
+  async singnOut() {
+    await this.angularFireAuth.signOut();
+    resetStores();
   }
 }

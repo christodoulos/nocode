@@ -11,9 +11,9 @@ export interface UI {
 const uiState = () =>
   ({
     signinDropdown: [
-      { icon: 'faGoogle', text: 'Google', url: 'signin?provider=google' },
-      { icon: 'faGithub', text: 'GitHub', url: 'signin?provider=github' },
-      { icon: 'faFacebook', text: 'Facebook', url: 'signin?provider=facebook' },
+      { icon: 'faGoogle', text: 'Google', url: 'user' },
+      { icon: 'faGithub', text: 'GitHub', url: 'user' },
+      { icon: 'faFacebook', text: 'Facebook', url: 'user' },
     ],
     loading: false,
   } as UI);
