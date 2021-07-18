@@ -33,6 +33,9 @@
     "code4code-e2e": {
       "tags": [],
       "implicitDependencies": ["code4code"]
+    },
+    "ui": {
+      "tags": []
     }
   }
 }
