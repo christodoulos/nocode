@@ -10,7 +10,7 @@ export interface FirebaseUser {
 }
 
 @Injectable({ providedIn: 'root' })
-@StoreConfig({ name: 'user', resettable: true })
+@StoreConfig({ name: 'Firebase User', resettable: true })
 export class FirebaseUserStore extends Store<FirebaseUser> {
   constructor() {
     super({});
