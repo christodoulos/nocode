@@ -15,6 +15,7 @@ export class FirebaseAuthService {
     this.angularFireAuth.authState.subscribe((user) => {
       if (user) {
         console.log(`FireAuth Service: \t${user.email} is LOGGED IN`);
+        this.firebaseUserService.updateUser(this.parseFirebaseUser(user));
       } else {
         console.log('FireAuth Service: \tLOGGED OUT');
       }
@@ -33,17 +34,6 @@ export class FirebaseAuthService {
 
   async googleSignIn() {
     const provider = new firebase.auth.GoogleAuthProvider();
-    await this.angularFireAuth
-      .signInWithPopup(provider)
-      .then((onfulfilled) => {
-        console.log(onfulfilled.additionalUserInfo);
-        if (onfulfilled.user) {
-          const user = this.parseFirebaseUser(onfulfilled.user);
-          this.firebaseUserService.updateUser(user);
-        }
-      })
-      .catch((onrejected) => {
-        console.log(onrejected.message);
-      });
+    await this.angularFireAuth.signInWithPopup(provider);
   }
 }
