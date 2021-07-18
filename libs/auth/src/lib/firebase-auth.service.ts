@@ -2,11 +2,16 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import firebase from 'firebase/app';
 
+import { FirebaseUser, FirebaseUserService } from './state';
+
 @Injectable({
   providedIn: 'root',
 })
 export class FirebaseAuthService {
-  constructor(private angularFireAuth: AngularFireAuth) {
+  constructor(
+    private angularFireAuth: AngularFireAuth,
+    private firebaseUserService: FirebaseUserService
+  ) {
     this.angularFireAuth.authState.subscribe((user) => {
       if (user) {
         console.log(`FireAuth Service: \t${user.email} is LOGGED IN`);
@@ -33,8 +38,8 @@ export class FirebaseAuthService {
       .then((onfulfilled) => {
         console.log(onfulfilled.additionalUserInfo);
         if (onfulfilled.user) {
-          const data = this.parseFirebaseUser(onfulfilled.user);
-          console.log(data);
+          const user = this.parseFirebaseUser(onfulfilled.user);
+          this.firebaseUserService.updateUser(user);
         }
       })
       .catch((onrejected) => {
