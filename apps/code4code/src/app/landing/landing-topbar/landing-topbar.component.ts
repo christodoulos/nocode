@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { UIQuery } from '../state';
+import { FirebaseAuthService } from '@nocode/auth';
 
 @Component({
   templateUrl: './landing-topbar.component.html',
@@ -8,10 +9,13 @@ import { UIQuery } from '../state';
 export class LandingTopbarComponent {
   items$ = this.uiQuery.signinDropdown$;
 
-  constructor(private uiQuery: UIQuery) {}
+  constructor(
+    private uiQuery: UIQuery,
+    private firebaseAuthService: FirebaseAuthService
+  ) {}
 
   onSelected($event: string) {
     console.log($event);
-    // if ($event === 'Google') [this.fireauthService.googleSignIn()];
+    if ($event === 'Google') [this.firebaseAuthService.googleSignIn()];
   }
 }
