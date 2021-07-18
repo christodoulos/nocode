@@ -1,0 +1,38 @@
+{
+  "npmScope": "nocode",
+  "affected": {
+    "defaultBase": "master"
+  },
+  "implicitDependencies": {
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
+    ".eslintrc.json": "*"
+  },
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "@nrwl/workspace/tasks-runners/default",
+      "options": {
+        "cacheableOperations": ["build", "lint", "test", "e2e"]
+      }
+    }
+  },
+  "targetDependencies": {
+    "build": [
+      {
+        "target": "build",
+        "projects": "dependencies"
+      }
+    ]
+  },
+  "projects": {
+    "code4code": {
+      "tags": []
+    },
+    "code4code-e2e": {
+      "tags": [],
+      "implicitDependencies": ["code4code"]
+    }
+  }
+}
