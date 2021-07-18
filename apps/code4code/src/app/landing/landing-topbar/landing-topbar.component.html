@@ -1,1 +1,35 @@
-<p>landing-topbar works!</p>
+<nav class="bg-indigo-600">
+  <div class="mx-auto px-2 sm:px-6 lg:px-8">
+    <div class="relative flex justify-between h-16">
+      <div class="flex-shrink-0 flex items-center">
+        <span
+          routerLink=""
+          class="cursor-pointer text-xl font-semibold text-white"
+          >Code4Code</span
+        >
+      </div>
+
+      <div
+        class="
+          absolute
+          inset-y-0
+          right-0
+          flex
+          items-center
+          pr-2
+          sm:static sm:inset-auto sm:ml-6 sm:pr-0
+        "
+      >
+        <!-- <button class="ml-2 text-gray-400 hover:text-gray-500">
+            Sign Up
+          </button> -->
+
+        <simple-dropdown
+          [label]="'Sign In'"
+          [items$]="items$"
+          (selected)="onSelected($event)"
+        ></simple-dropdown>
+      </div>
+    </div>
+  </div>
+</nav>

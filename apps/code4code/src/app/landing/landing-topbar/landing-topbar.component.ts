@@ -1,14 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { UIQuery } from '../state';
 
 @Component({
   templateUrl: './landing-topbar.component.html',
-  styleUrls: ['./landing-topbar.component.css']
+  styleUrls: ['./landing-topbar.component.css'],
 })
-export class LandingTopbarComponent implements OnInit {
+export class LandingTopbarComponent {
+  items$ = this.uiQuery.signinDropdown$;
 
-  constructor() { }
+  constructor(private uiQuery: UIQuery) {}
 
-  ngOnInit(): void {
+  onSelected($event: string) {
+    console.log($event);
+    // if ($event === 'Google') [this.fireauthService.googleSignIn()];
   }
-
 }
