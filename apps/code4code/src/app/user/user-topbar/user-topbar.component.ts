@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { UserQuery } from '@nocode/auth';
+import { FirebaseAuthService, UserQuery } from '@nocode/auth';
 
 @Component({
   templateUrl: './user-topbar.component.html',
@@ -10,5 +10,14 @@ export class UserTopbarComponent {
   photoURL$ = this.userQuery.userPhotoURL$;
   displayName$ = this.userQuery.userDisplayName$;
 
-  constructor(private userQuery: UserQuery) {}
+  constructor(
+    private userQuery: UserQuery,
+    private firebaseAuthService: FirebaseAuthService
+  ) {}
+
+  onSelected(action: string) {
+    if (action === 'Sign Out') {
+      this.firebaseAuthService.singnOut();
+    }
+  }
 }

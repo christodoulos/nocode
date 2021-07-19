@@ -4,7 +4,6 @@ import {
   HostListener,
   Input,
   Output,
-  ChangeDetectionStrategy,
 } from '@angular/core';
 
 @Component({
@@ -12,7 +11,6 @@ import {
   selector: 'simple-dropdown',
   templateUrl: './simple-dropdown.component.html',
   styleUrls: ['./simple-dropdown.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SimpleDropdownComponent {
   dropdownVisible = false;

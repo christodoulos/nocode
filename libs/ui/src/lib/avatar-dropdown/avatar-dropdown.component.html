@@ -22,5 +22,9 @@
     </button>
   </div>
 
-  <dropdown [items]="items" [visible]="dropdownVisible"></dropdown>
+  <dropdown
+    [items]="items"
+    [visible]="dropdownVisible"
+    (selected)="onItemClick($event)"
+  ></dropdown>
 </div>

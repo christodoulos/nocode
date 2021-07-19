@@ -23,6 +23,7 @@
         <avatar-dropdown
           [imageURL$]="photoURL$"
           [items]="items"
+          (selected)="onSelected($event)"
         ></avatar-dropdown>
       </div>
     </div>

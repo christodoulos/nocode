@@ -10,5 +10,5 @@ import { Observable } from 'rxjs';
 })
 export class AvatarCircularComponent {
   @Input() imageURL$: Observable<string | null | undefined> | undefined;
-  @Input() size = 8;
+  @Input() size = 10;
 }

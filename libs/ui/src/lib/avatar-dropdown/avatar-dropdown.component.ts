@@ -1,6 +1,5 @@
 import {
   Component,
-  ChangeDetectionStrategy,
   Input,
   Output,
   EventEmitter,
@@ -13,7 +12,6 @@ import { Observable } from 'rxjs';
   selector: 'avatar-dropdown',
   templateUrl: './avatar-dropdown.component.html',
   styleUrls: ['./avatar-dropdown.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AvatarDropdownComponent {
   dropdownVisible = false;
