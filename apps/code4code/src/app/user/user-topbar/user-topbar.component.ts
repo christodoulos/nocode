@@ -1,14 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { UserQuery } from '@nocode/auth';
 
 @Component({
   templateUrl: './user-topbar.component.html',
-  styleUrls: ['./user-topbar.component.css']
+  styleUrls: ['./user-topbar.component.css'],
 })
-export class UserTopbarComponent implements OnInit {
+export class UserTopbarComponent {
+  photoURL$ = this.userQuery.userPhotoURL$;
+  displayName$ = this.userQuery.userDisplayName$;
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  constructor(private userQuery: UserQuery) {}
 }

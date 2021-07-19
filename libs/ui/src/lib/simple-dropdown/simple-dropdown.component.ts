@@ -19,7 +19,7 @@ import { DropdownItem } from '../interfaces';
 export class SimpleDropdownComponent {
   dropdownVisible = false;
   @Input() items$: Observable<Array<DropdownItem>> | undefined;
-  @Input() label = 'Label';
+  @Input() label: string | null | undefined;
   @Output() selected: EventEmitter<string> = new EventEmitter<string>();
 
   @HostListener('click')

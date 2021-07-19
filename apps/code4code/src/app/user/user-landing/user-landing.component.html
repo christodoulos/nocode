@@ -1,2 +1,2 @@
-<p>user-landing works!</p>
+Welcome {{ (user$ | async)?.displayName }}
 <p (click)="signOut()">logout</p>

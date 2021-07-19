@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Route } from '@angular/router';
 import { canActivate, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
 
+import { UiModule } from '@nocode/ui';
+
 import { UserLandingComponent } from './user-landing/user-landing.component';
 import { UserTopbarComponent } from './user-topbar/user-topbar.component';
 
@@ -24,6 +26,6 @@ export const userRoutes: Route[] = [
 
 @NgModule({
   declarations: [UserLandingComponent, UserTopbarComponent],
-  imports: [CommonModule, RouterModule.forChild(userRoutes)],
+  imports: [CommonModule, RouterModule.forChild(userRoutes), UiModule],
 })
 export class UserModule {}
