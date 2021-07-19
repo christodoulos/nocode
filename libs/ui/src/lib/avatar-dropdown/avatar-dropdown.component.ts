@@ -7,7 +7,6 @@ import {
   HostListener,
 } from '@angular/core';
 import { Observable } from 'rxjs';
-import { DropdownItem } from '../interfaces';
 
 @Component({
   // eslint-disable-next-line @angular-eslint/component-selector
@@ -18,7 +17,7 @@ import { DropdownItem } from '../interfaces';
 })
 export class AvatarDropdownComponent {
   dropdownVisible = false;
-  @Input() items$: Observable<Array<DropdownItem>> | undefined;
+  @Input() items: Array<string> | undefined;
   @Input() imageURL$: Observable<string | null | undefined> | undefined;
   @Output() selected: EventEmitter<string> = new EventEmitter<string>();
 

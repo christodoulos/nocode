@@ -16,7 +16,6 @@ import {
 })
 export class SimpleDropdownComponent {
   dropdownVisible = false;
-  _selected: string | undefined;
   @Input() items: Array<string> | undefined;
   @Input() label: string | null | undefined;
   @Output() selected: EventEmitter<string> = new EventEmitter<string>();
