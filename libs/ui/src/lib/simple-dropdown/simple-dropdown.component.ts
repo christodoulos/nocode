@@ -6,8 +6,6 @@ import {
   Output,
   ChangeDetectionStrategy,
 } from '@angular/core';
-import { Observable } from 'rxjs';
-import { DropdownItem } from '../interfaces';
 
 @Component({
   // eslint-disable-next-line @angular-eslint/component-selector
@@ -18,7 +16,8 @@ import { DropdownItem } from '../interfaces';
 })
 export class SimpleDropdownComponent {
   dropdownVisible = false;
-  @Input() items$: Observable<Array<DropdownItem>> | undefined;
+  _selected: string | undefined;
+  @Input() items: Array<string> | undefined;
   @Input() label: string | null | undefined;
   @Output() selected: EventEmitter<string> = new EventEmitter<string>();
 
@@ -27,7 +26,7 @@ export class SimpleDropdownComponent {
     this.dropdownVisible = !this.dropdownVisible;
   }
 
-  onItemClick(item: string) {
-    this.selected.emit(item);
+  onItemClick(selected: string) {
+    this.selected.emit(selected);
   }
 }

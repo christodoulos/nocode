@@ -8,6 +8,7 @@ import { FirebaseAuthService } from '@nocode/auth';
 })
 export class LandingTopbarComponent {
   items$ = this.uiQuery.signinDropdown$;
+  items = ['Google', 'GitHub', 'Facebook'];
 
   constructor(
     private uiQuery: UIQuery,

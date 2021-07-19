@@ -19,7 +19,7 @@ const uiState = () =>
   } as UI);
 
 @Injectable({ providedIn: 'root' })
-@StoreConfig({ name: 'UI' })
+@StoreConfig({ name: 'User UI' })
 export class UIStore extends Store<UI> {
   constructor() {
     super(uiState());
