@@ -20,7 +20,10 @@
           sm:static sm:inset-auto sm:ml-6 sm:pr-0
         "
       >
-        <avatar-circular [imageURL$]="photoURL$"></avatar-circular>
+        <avatar-dropdown
+          [imageURL$]="photoURL$"
+          [items$]="items$"
+        ></avatar-dropdown>
       </div>
     </div>
   </div>
