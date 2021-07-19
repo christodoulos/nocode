@@ -14,8 +14,9 @@ export class LandingTopbarComponent {
     private firebaseAuthService: FirebaseAuthService
   ) {}
 
-  onSelected($event: string) {
-    console.log($event);
-    if ($event === 'Google') [this.firebaseAuthService.googleSignIn()];
+  onSelected(provider: string) {
+    if (provider === 'Google') {
+      this.firebaseAuthService.googleSignIn();
+    }
   }
 }
