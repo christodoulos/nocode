@@ -4,6 +4,7 @@ import firebase from 'firebase/app';
 
 import { FirebaseUser, FirebaseUserService } from './state';
 import { resetStores } from '@datorama/akita';
+import { FirestoreService } from './firestore.service';
 
 @Injectable({
   providedIn: 'root',
@@ -11,12 +12,14 @@ import { resetStores } from '@datorama/akita';
 export class FirebaseAuthService {
   constructor(
     private angularFireAuth: AngularFireAuth,
-    private firebaseUserService: FirebaseUserService
+    private firebaseUserService: FirebaseUserService,
+    private firestoreService: FirestoreService
   ) {
     this.angularFireAuth.authState.subscribe((user) => {
       if (user) {
         console.log(`FireAuth Service: \t${user.email} is LOGGED IN`);
         this.firebaseUserService.updateUser(this.parseFirebaseUser(user));
+        this.firestoreService.updateUsersDoc(this.parseFirebaseUser(user));
       } else {
         console.log('FireAuth Service: \tLOGGED OUT');
       }

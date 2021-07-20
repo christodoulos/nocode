@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Store, StoreConfig } from '@datorama/akita';
 
 export interface FirebaseUser {
+  [key: string]: string | null | boolean | undefined;
   displayName: string | null;
   email: string | null;
   emailVerified: boolean;
