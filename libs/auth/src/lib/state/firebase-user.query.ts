@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Query } from '@datorama/akita';
-import { FirebaseUser, FirebaseUserStore } from './firebase-user.store';
+import { FirebaseUserStore } from './firebase-user.store';
+import { FirebaseUser } from './firebase-user.model';
 
 @Injectable({ providedIn: 'root' })
 export class UserQuery extends Query<FirebaseUser> {

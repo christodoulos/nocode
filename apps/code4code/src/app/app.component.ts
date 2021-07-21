@@ -10,6 +10,7 @@ import { UserQuery } from '@nocode/auth';
 export class AppComponent {
   title = 'code4code';
   loggedIn$ = this.userQuery.loggedIn$;
+
   constructor(private userQuery: UserQuery, private router: Router) {
     this.loggedIn$.subscribe((isLoggedIn) => {
       if (isLoggedIn) {

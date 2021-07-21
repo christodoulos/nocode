@@ -3,11 +3,10 @@ import {
   AngularFirestore,
   AngularFirestoreDocument,
 } from '@angular/fire/firestore';
+import { FirebaseUser } from './state';
 
-interface User {
-  [key: string]: string | boolean | null | undefined;
-  uid: string;
-}
+import { distinctUntilChanged } from 'rxjs/operators';
+import * as _ from 'lodash';
 
 @Injectable({
   providedIn: 'root',
@@ -15,10 +14,17 @@ interface User {
 export class FirestoreService {
   constructor(private angularFirestore: AngularFirestore) {}
 
-  updateUsersDoc(data: User) {
+  updateUsersDoc(data: FirebaseUser) {
     const userRef: AngularFirestoreDocument = this.angularFirestore.doc(
       `users/${data.uid}`
     );
     userRef.set({ ...data }, { merge: true });
+  }
+
+  searchUserDoc(uid: string) {
+    return this.angularFirestore
+      .collection('users', (ref) => ref.where('uid', '==', uid))
+      .valueChanges()
+      .pipe(distinctUntilChanged((prev, curr) => _.isEqual(prev, curr)));
   }
 }

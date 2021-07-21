@@ -1,14 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Store, StoreConfig } from '@datorama/akita';
-
-export interface FirebaseUser {
-  [key: string]: string | null | boolean | undefined;
-  displayName: string | null;
-  email: string | null;
-  emailVerified: boolean;
-  photoURL: string | null;
-  uid: string;
-}
+import { FirebaseUser } from './firebase-user.model';
 
 @Injectable({ providedIn: 'root' })
 @StoreConfig({ name: 'Firebase User', resettable: true })
