@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { FirebaseAuthService, FirebaseUserService } from '@nocode/auth';
+import {
+  FirebaseAuthService,
+  FirebaseUserService,
+  FirestoreService,
+} from '@nocode/auth';
 
 @Component({
   selector: 'nocode-root',
@@ -14,6 +18,7 @@ export class AppComponent {
   constructor(
     private authService: FirebaseAuthService,
     private userService: FirebaseUserService,
+    private fireService: FirestoreService,
     private router: Router
   ) {
     this.loggedIn$.subscribe((user) => {
@@ -22,6 +27,13 @@ export class AppComponent {
         console.log(`${data.email} is loggedin`);
         this.userService.updateUser(data);
         this.router.navigate(['user']);
+        this.fireService
+          .isNewUser$(user.uid)
+          .subscribe((isNew) =>
+            isNew
+              ? this.router.navigate(['user', 'signup'])
+              : console.log('user exists')
+          );
       } else {
         this.router.navigate(['']);
         console.log('logged out');

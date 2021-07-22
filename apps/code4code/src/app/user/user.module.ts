@@ -7,6 +7,7 @@ import { UiModule } from '@nocode/ui';
 
 import { UserLandingComponent } from './user-landing/user-landing.component';
 import { UserTopbarComponent } from './user-topbar/user-topbar.component';
+import { SignupComponent } from './signup/signup.component';
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['']);
 
@@ -22,10 +23,11 @@ export const userRoutes: Route[] = [
     outlet: 'topbar',
     ...canActivate(redirectUnauthorizedToLogin),
   },
+  { path: 'signup', component: SignupComponent },
 ];
 
 @NgModule({
-  declarations: [UserLandingComponent, UserTopbarComponent],
+  declarations: [UserLandingComponent, UserTopbarComponent, SignupComponent],
   imports: [CommonModule, RouterModule.forChild(userRoutes), UiModule],
 })
 export class UserModule {}

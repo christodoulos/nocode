@@ -5,7 +5,7 @@ import {
 } from '@angular/fire/firestore';
 import { FirebaseUser } from './state';
 
-import { distinctUntilChanged } from 'rxjs/operators';
+import { distinctUntilChanged, map, take } from 'rxjs/operators';
 import * as _ from 'lodash';
 
 @Injectable({
@@ -26,5 +26,12 @@ export class FirestoreService {
       .collection('users', (ref) => ref.where('uid', '==', uid))
       .valueChanges()
       .pipe(distinctUntilChanged((prev, curr) => _.isEqual(prev, curr)));
+  }
+
+  isNewUser$(uid: string) {
+    return this.searchUserDoc(uid).pipe(
+      map((value) => value.length === 0),
+      take(1)
+    );
   }
 }
