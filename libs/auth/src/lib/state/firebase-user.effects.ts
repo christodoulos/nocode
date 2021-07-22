@@ -18,9 +18,11 @@ export class FirebaseUserEffects {
 
   firebaseSigninSuccessEffect$ = createEffect(() =>
     this.actions$.pipe(
-      tap((lala) => console.log(lala, 'ki aposkata')),
       ofType(FirebaseSigninSuccess),
-      map((payload) => payload.user),
+      map((payload) => {
+        console.log(payload);
+        return payload.user;
+      }),
       tap((user) => this.userService.updateUser(user))
     )
   );

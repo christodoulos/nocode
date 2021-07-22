@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserQuery } from '@nocode/auth';
+import { FirebaseAuthService, FirebaseUserService } from '@nocode/auth';
 
 @Component({
   selector: 'nocode-root',
@@ -9,14 +9,22 @@ import { UserQuery } from '@nocode/auth';
 })
 export class AppComponent {
   title = 'code4code';
-  loggedIn$ = this.userQuery.loggedIn$;
+  loggedIn$ = this.authService.loggedIn$;
 
-  constructor(private userQuery: UserQuery, private router: Router) {
-    this.loggedIn$.subscribe((isLoggedIn) => {
-      if (isLoggedIn) {
+  constructor(
+    private authService: FirebaseAuthService,
+    private userService: FirebaseUserService,
+    private router: Router
+  ) {
+    this.loggedIn$.subscribe((user) => {
+      if (user) {
+        const data = authService.parseFirebaseUser(user);
+        console.log(`${data.email} is loggedin`);
+        this.userService.updateUser(data);
         this.router.navigate(['user']);
       } else {
         this.router.navigate(['']);
+        console.log('logged out');
       }
     });
   }
