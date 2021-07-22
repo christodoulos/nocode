@@ -11,6 +11,8 @@ export class UserQuery extends Query<FirebaseUser> {
   uid$ = this.select((state) => state.uid);
   userEmail$ = this.select((state) => state.email);
   userDisplayName$ = this.select((state) => state.displayName);
+  firstName$ = this.select((state) => state.displayName?.split(' ')[0]);
+  lastName$ = this.select((state) => state.displayName?.split(' ')[1]);
   userPhotoURL$ = this.select((state) => state.photoURL);
   constructor(protected store: FirebaseUserStore) {
     super(store);
