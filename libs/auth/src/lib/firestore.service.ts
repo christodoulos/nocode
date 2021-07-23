@@ -31,6 +31,14 @@ export class FirestoreService {
       .pipe(distinctUntilChanged((prev, curr) => _.isEqual(prev, curr)));
   }
 
+  userDoc(uid: string) {
+    return this.angularFirestore
+      .collection('users')
+      .doc(`${uid}`)
+      .valueChanges()
+      .pipe(distinctUntilChanged((prev, curr) => _.isEqual(prev, curr)));
+  }
+
   isNewUser$(uid: string) {
     return this.searchUserDoc(uid).pipe(
       map((value) => value.length === 0),

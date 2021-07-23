@@ -25,6 +25,11 @@ export const userRoutes: Route[] = [
     ...canActivate(redirectUnauthorizedToLogin),
   },
   { path: 'signup', component: SignupComponent },
+  {
+    path: '*',
+    component: UserLandingComponent,
+    ...canActivate(redirectUnauthorizedToLogin),
+  },
 ];
 
 @NgModule({
