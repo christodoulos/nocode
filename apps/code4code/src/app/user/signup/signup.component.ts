@@ -36,7 +36,6 @@ export class SignupComponent {
 
   doSignUp() {
     if (this.signupForm.valid) {
-      console.log({ ...this.firebaseUser, ...this.signupForm.value });
       this.firestoreService.updateUsersDoc({
         ...this.firebaseUser,
         ...this.signupForm.value,
