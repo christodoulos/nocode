@@ -3,10 +3,13 @@ import {
   AngularFirestore,
   AngularFirestoreDocument,
 } from '@angular/fire/firestore';
-import { FirebaseUser } from './state';
 
 import { distinctUntilChanged, map, take } from 'rxjs/operators';
 import * as _ from 'lodash';
+
+export interface FirestoreUser {
+  [key: string]: string | boolean | null | undefined;
+}
 
 @Injectable({
   providedIn: 'root',
@@ -14,7 +17,7 @@ import * as _ from 'lodash';
 export class FirestoreService {
   constructor(private angularFirestore: AngularFirestore) {}
 
-  updateUsersDoc(data: FirebaseUser) {
+  updateUsersDoc(data: FirestoreUser) {
     const userRef: AngularFirestoreDocument = this.angularFirestore.doc(
       `users/${data.uid}`
     );

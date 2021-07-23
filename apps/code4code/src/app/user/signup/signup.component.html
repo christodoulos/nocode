@@ -1,15 +1,13 @@
-<form class="space-y-8 divide-y divide-gray-200">
+<form class="space-y-8 divide-y divide-gray-200" [formGroup]="signupForm">
   <div class="space-y-8 divide-y divide-gray-200">
     <div>
       <div>
         <h3 class="text-xl leading-6 font-medium text-gray-900">Sign Up</h3>
         <p class="mt-1 text-sm text-gray-500">
-          Please fill in the following information to continue using out
+          Please fill in the following information to continue using our
           platform.
         </p>
       </div>
-      <!-- </div>
-    <div class="pt-8"> -->
       <div class="pt-8">
         <h3 class="text-lg leading-6 font-medium text-gray-900">
           Personal Information
@@ -55,6 +53,7 @@
           </label>
           <div class="mt-1">
             <select
+              formControlName="role"
               id="role"
               name="role"
               autocomplete="role"
@@ -82,6 +81,7 @@
     <div class="flex justify-end">
       <button
         type="button"
+        (click)="doCancel()"
         class="
           bg-white
           py-2
@@ -102,7 +102,8 @@
         Cancel
       </button>
       <button
-        type="submit"
+        type="button"
+        (click)="doSignUp()"
         class="
           ml-3
           inline-flex

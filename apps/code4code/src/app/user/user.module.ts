@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Route } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
 import { canActivate, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
 
 import { UiModule } from '@nocode/ui';
@@ -28,6 +29,11 @@ export const userRoutes: Route[] = [
 
 @NgModule({
   declarations: [UserLandingComponent, UserTopbarComponent, SignupComponent],
-  imports: [CommonModule, RouterModule.forChild(userRoutes), UiModule],
+  imports: [
+    CommonModule,
+    RouterModule.forChild(userRoutes),
+    ReactiveFormsModule,
+    UiModule,
+  ],
 })
 export class UserModule {}
