@@ -30,9 +30,7 @@ export class AppComponent {
         this.fireService
           .isNewUser$(user.uid)
           .subscribe((isNew) =>
-            isNew
-              ? this.router.navigate(['user', 'signup'])
-              : console.log('user exists')
+            isNew ? this.router.navigate(['user', 'signup']) : {}
           );
       } else {
         this.router.navigate(['']);

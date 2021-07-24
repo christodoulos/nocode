@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Route } from '@angular/router';
+import { AkitaNgEffectsModule } from '@datorama/akita-ng-effects';
 import { ReactiveFormsModule } from '@angular/forms';
 import { canActivate, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
 
@@ -9,6 +10,8 @@ import { UiModule } from '@nocode/ui';
 import { UserLandingComponent } from './user-landing/user-landing.component';
 import { UserTopbarComponent } from './user-topbar/user-topbar.component';
 import { SignupComponent } from './signup/signup.component';
+
+import { C4CUserEffects } from './state';
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['']);
 
@@ -37,6 +40,7 @@ export const userRoutes: Route[] = [
   imports: [
     CommonModule,
     RouterModule.forChild(userRoutes),
+    AkitaNgEffectsModule.forFeature([C4CUserEffects]),
     ReactiveFormsModule,
     UiModule,
   ],
