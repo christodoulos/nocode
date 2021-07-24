@@ -22,7 +22,6 @@ export const landingRoutes: Route[] = [
     outlet: 'topbar',
     ...canActivate(redirectLoggedInToUser),
   },
-  // { path: 'signup', component: SignupComponent },
 ];
 
 @NgModule({
