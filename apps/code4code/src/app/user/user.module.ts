@@ -12,6 +12,7 @@ import { UserTopbarComponent } from './user-topbar/user-topbar.component';
 import { SignupComponent } from './signup/signup.component';
 
 import { C4CUserEffects } from './state';
+import { FirebaseUserEffects } from '@nocode/auth';
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['']);
 
@@ -40,7 +41,7 @@ export const userRoutes: Route[] = [
   imports: [
     CommonModule,
     RouterModule.forChild(userRoutes),
-    AkitaNgEffectsModule.forFeature([C4CUserEffects]),
+    AkitaNgEffectsModule.forFeature([C4CUserEffects, FirebaseUserEffects]),
     ReactiveFormsModule,
     UiModule,
   ],

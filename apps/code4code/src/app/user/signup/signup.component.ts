@@ -1,12 +1,9 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Actions } from '@datorama/akita-ng-effects';
 import { FormControl, FormGroup } from '@ngneat/reactive-forms';
-import {
-  UserQuery,
-  FirestoreUser,
-  FirebaseAuthService,
-  FirestoreService,
-} from '@nocode/auth';
+import { UserQuery, FirestoreUser, FirebaseSignoutAction } from '@nocode/auth';
 import { Validators } from '@angular/forms';
+import { C4CUser, UserSignupAction } from '../state';
 
 @Component({
   templateUrl: './signup.component.html',
@@ -20,26 +17,23 @@ export class SignupComponent {
   firebaseUser = this.userQuery.getValue();
   signupForm: FormGroup<FirestoreUser>;
 
-  constructor(
-    private userQuery: UserQuery,
-    private authService: FirebaseAuthService,
-    private firestoreService: FirestoreService
-  ) {
+  constructor(private actions: Actions, private userQuery: UserQuery) {
     this.signupForm = new FormGroup<FirestoreUser>({
       role: new FormControl('', [Validators.required]),
     });
   }
 
   doCancel() {
-    this.authService.singnOut();
+    this.actions.dispatch(FirebaseSignoutAction);
   }
 
   doSignUp() {
     if (this.signupForm.valid) {
-      this.firestoreService.updateUsersDoc({
+      const data = {
         ...this.firebaseUser,
         ...this.signupForm.value,
-      });
+      } as C4CUser;
+      this.actions.dispatch(UserSignupAction({ data }));
     }
   }
 }
