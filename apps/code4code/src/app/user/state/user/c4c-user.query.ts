@@ -4,7 +4,7 @@ import { C4CUserStore } from './c4c-user.store';
 import { C4CUser } from './c4c-user.model';
 
 @Injectable({ providedIn: 'root' })
-export class C4CQuery extends Query<C4CUser> {
+export class C4CUserQuery extends Query<C4CUser> {
   user$ = this.select();
   role$ = this.select((state) => state.role);
   loggedIn$ = this.select((state) => state.uid !== '' && state.emailVerified);
