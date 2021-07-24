@@ -11,7 +11,6 @@ import { Observable } from 'rxjs';
   // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'avatar-dropdown',
   templateUrl: './avatar-dropdown.component.html',
-  styleUrls: ['./avatar-dropdown.component.css'],
 })
 export class AvatarDropdownComponent {
   dropdownVisible = false;

@@ -5,7 +5,6 @@ import { Observable } from 'rxjs';
   // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'avatar-circular',
   templateUrl: './avatar-circular.component.html',
-  styleUrls: ['./avatar-circular.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AvatarCircularComponent {

@@ -10,7 +10,6 @@ import {
   // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'simple-dropdown',
   templateUrl: './simple-dropdown.component.html',
-  styleUrls: ['./simple-dropdown.component.css'],
 })
 export class SimpleDropdownComponent {
   dropdownVisible = false;

@@ -10,7 +10,6 @@ import {
   // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'dropdown',
   templateUrl: './dropdown.component.html',
-  styleUrls: ['./dropdown.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DropdownComponent {
