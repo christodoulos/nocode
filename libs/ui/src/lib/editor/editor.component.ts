@@ -33,7 +33,20 @@ export class EditorComponent implements AfterViewInit {
     }
   }
 
+  onSave() {
+    if (this.editorView) {
+      const code = this.editorView.state.doc.toJSON();
+      for (let i = 0; i < this.editorView.state.doc.lines; i++) {
+        console.log(code[i]);
+      }
+    }
+  }
+
   onNew() {
-    console.log(this.editorView?.state.doc);
+    console.log('On new click');
+  }
+
+  onOpen() {
+    console.log('On open click');
   }
 }
