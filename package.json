@@ -45,6 +45,7 @@
     "@codemirror/view": "^0.18.19",
     "@datorama/akita": "^6.2.1",
     "@datorama/akita-ng-effects": "^1.0.4",
+    "@datorama/akita-ng-router-store": "^6.0.1",
     "@ngneat/error-tailor": "^1.4.3",
     "@ngneat/reactive-forms": "^1.7.3",
     "@ngneat/until-destroy": "^8.1.1",

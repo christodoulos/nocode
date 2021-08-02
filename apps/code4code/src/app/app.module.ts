@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
+import { AkitaNgRouterStoreModule } from '@datorama/akita-ng-router-store';
 import { AkitaNgDevtools } from '@datorama/akita-ngdevtools';
 import { AngularFireModule } from '@angular/fire';
 
@@ -24,6 +25,7 @@ import { AppComponent } from './app.component';
           import('./user/user.module').then((m) => m.UserModule),
       },
     ]),
+    AkitaNgRouterStoreModule,
     environment.production ? [] : AkitaNgDevtools.forRoot(),
     AngularFireModule.initializeApp(environment.firebase),
   ],

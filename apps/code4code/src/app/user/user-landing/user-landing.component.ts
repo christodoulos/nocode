@@ -3,6 +3,8 @@ import { Actions } from '@datorama/akita-ng-effects';
 import { UserQuery } from '@nocode/auth';
 import { UserUpdateAction, C4CUserQuery } from '../state/';
 
+import { Script, ScriptService } from '../state';
+
 @Component({
   templateUrl: './user-landing.component.html',
   styleUrls: ['./user-landing.component.css'],
@@ -14,17 +16,15 @@ export class UserLandingComponent {
   constructor(
     private actions: Actions,
     private userQuery: UserQuery,
-    private c4cUserQuery: C4CUserQuery
+    private c4cUserQuery: C4CUserQuery,
+    private scriptService: ScriptService
   ) {
     const uid = this.userQuery.getValue().uid;
     this.actions.dispatch(UserUpdateAction({ uid }));
   }
 
-  onScriptCode(code: Array<string>) {
-    code.forEach((line) => console.log(line));
-  }
-
-  onScriptName(name: string) {
-    console.log(name);
+  onScript(script: Script) {
+    console.log(script);
+    this.scriptService.add(script);
   }
 }

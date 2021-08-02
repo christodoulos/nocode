@@ -17,6 +17,12 @@ import {
   animals,
 } from 'unique-names-generator';
 
+export interface Script {
+  name: string;
+  code: Array<string>;
+  lang: string;
+}
+
 @Component({
   // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'editor',
@@ -26,10 +32,7 @@ import {
 })
 export class EditorComponent implements AfterViewInit {
   @ViewChild('editor') editorElmRef: ElementRef | undefined;
-  @Output() scriptCode: EventEmitter<Array<string>> = new EventEmitter<
-    Array<string>
-  >();
-  @Output() scriptName: EventEmitter<string> = new EventEmitter<string>();
+  @Output() script: EventEmitter<Script> = new EventEmitter<Script>();
   editorDiv: HTMLDivElement | undefined;
   editorView: EditorView | undefined;
   randomName = uniqueNamesGenerator({
@@ -50,8 +53,11 @@ export class EditorComponent implements AfterViewInit {
 
   onSave() {
     if (this.editorView) {
-      this.scriptCode.emit(this.editorView.state.doc.toJSON());
-      this.scriptName.emit(this.randomName);
+      this.script.emit({
+        name: this.randomName,
+        code: this.editorView.state.doc.toJSON(),
+        lang: 'python',
+      });
     }
   }
 
