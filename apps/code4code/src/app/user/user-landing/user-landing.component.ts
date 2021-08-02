@@ -19,4 +19,12 @@ export class UserLandingComponent {
     const uid = this.userQuery.getValue().uid;
     this.actions.dispatch(UserUpdateAction({ uid }));
   }
+
+  onScriptCode(code: Array<string>) {
+    code.forEach((line) => console.log(line));
+  }
+
+  onScriptName(name: string) {
+    console.log(name);
+  }
 }

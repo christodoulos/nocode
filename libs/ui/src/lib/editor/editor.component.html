@@ -1,8 +1,26 @@
 <div class="mt-1 flex flex-col">
-  <div class="text-xs">
-    <button (click)="onNew()" class="mr-2 p-1 button border">New</button>
-    <button (click)="onSave()" class="mr-2 p-1 button border">Save</button>
-    <button (click)="onOpen()" class="mr-2 p-1 button border">Open</button>
+  <div class="text-xs flex items-center">
+    <div>
+      <button (click)="onNew()" class="mr-2 p-1 button border">New</button>
+      <button (click)="onSave()" class="mr-2 p-1 button border">Save</button>
+      <button (click)="onOpen()" class="mr-2 p-1 button border">Open</button>
+      <button (click)="onRun()" class="mr-2 p-1 button border">Run</button>
+    </div>
+    <div>
+      <label for="filename" class="sr-only">File name</label>
+      <input
+        [(ngModel)]="randomName"
+        type="text"
+        name="filename"
+        id="filename"
+        class="
+          focus:ring-indigo-500 focus:border-indigo-500
+          text-xs
+          border-gray-300
+        "
+        placeholder="Script Name"
+      />
+    </div>
   </div>
   <div #editor class="border mt-1"></div>
 </div>

@@ -1,3 +1,6 @@
 <p>Welcome {{ displayName$ | async }}</p>
 <p>Your role is {{ role$ | async }}</p>
-<editor></editor>
+<editor
+  (scriptCode)="onScriptCode($event)"
+  (scriptName)="onScriptName($event)"
+></editor>
