@@ -13,4 +13,8 @@ export class ScriptService extends CollectionService<ScriptState> {
     const uid = this.userQuery.getValue().uid;
     return `users/${uid}/scripts`;
   }
+
+  get idKey() {
+    return 'name';
+  }
 }

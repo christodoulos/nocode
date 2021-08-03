@@ -35,9 +35,7 @@ export class EditorComponent implements AfterViewInit {
   @Output() script: EventEmitter<Script> = new EventEmitter<Script>();
   editorDiv: HTMLDivElement | undefined;
   editorView: EditorView | undefined;
-  randomName = uniqueNamesGenerator({
-    dictionaries: [adjectives, colors, animals],
-  });
+  randomName = this.newRandomName();
 
   ngAfterViewInit(): void {
     if (this.editorElmRef) {
@@ -51,6 +49,12 @@ export class EditorComponent implements AfterViewInit {
     }
   }
 
+  newRandomName() {
+    return uniqueNamesGenerator({
+      dictionaries: [adjectives, colors, animals],
+    });
+  }
+
   onSave() {
     if (this.editorView) {
       this.script.emit({
@@ -58,6 +62,7 @@ export class EditorComponent implements AfterViewInit {
         code: this.editorView.state.doc.toJSON(),
         lang: 'python',
       });
+      // this.randomName = this.newRandomName();
     }
   }
 
