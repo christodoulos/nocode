@@ -9,6 +9,7 @@ import {
 } from '@angular/core';
 import { EditorState, EditorView, basicSetup } from '@codemirror/basic-setup';
 import { python } from '@codemirror/lang-python';
+import { ViewUpdate } from '@codemirror/view';
 
 import {
   uniqueNamesGenerator,
@@ -33,16 +34,26 @@ export interface Script {
 export class EditorComponent implements AfterViewInit {
   @ViewChild('editor') editorElmRef: ElementRef | undefined;
   @Output() script: EventEmitter<Script> = new EventEmitter<Script>();
+  @Output() newScript = new EventEmitter();
   editorDiv: HTMLDivElement | undefined;
   editorView: EditorView | undefined;
   randomName = this.newRandomName();
+  docChanged = false;
 
   ngAfterViewInit(): void {
     if (this.editorElmRef) {
       this.editorDiv = this.editorElmRef.nativeElement;
       this.editorView = new EditorView({
         state: EditorState.create({
-          extensions: [basicSetup, python()],
+          extensions: [
+            basicSetup,
+            python(),
+            EditorView.updateListener.of((v: ViewUpdate) => {
+              if (v.docChanged) {
+                this.docChanged = true;
+              }
+            }),
+          ],
         }),
         parent: this.editorDiv,
       });
@@ -55,6 +66,14 @@ export class EditorComponent implements AfterViewInit {
     });
   }
 
+  clearEditorDocument() {
+    if (this.editorView) {
+      this.editorView.dispatch({
+        changes: { from: 0, to: this.editorView.state.doc.length },
+      });
+    }
+  }
+
   onSave() {
     if (this.editorView) {
       this.script.emit({
@@ -62,12 +81,14 @@ export class EditorComponent implements AfterViewInit {
         code: this.editorView.state.doc.toJSON(),
         lang: 'python',
       });
-      // this.randomName = this.newRandomName();
+      this.randomName = this.newRandomName();
     }
   }
 
   onNew() {
     console.log('On new click');
+    this.randomName = this.newRandomName();
+    this.clearEditorDocument();
   }
 
   onOpen() {
