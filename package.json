@@ -25,7 +25,8 @@
     "update": "nx migrate latest",
     "workspace-generator": "nx workspace-generator",
     "dep-graph": "nx dep-graph",
-    "help": "nx help"
+    "help": "nx help",
+    "generate-icons": "svg-generator"
   },
   "private": true,
   "dependencies": {
@@ -48,6 +49,7 @@
     "@datorama/akita-ng-router-store": "^6.0.1",
     "@ngneat/error-tailor": "^1.4.3",
     "@ngneat/reactive-forms": "^1.7.3",
+    "@ngneat/svg-icon": "^3.2.0",
     "@ngneat/until-destroy": "^8.1.1",
     "@nrwl/angular": "12.5.8",
     "akita-ng-fire": "^6.0.3",
@@ -102,6 +104,20 @@
     "tailwindcss": "^2.2.4",
     "ts-jest": "27.0.3",
     "ts-node": "~9.1.1",
-    "typescript": "~4.2.4"
+    "typescript": "~4.2.4",
+    "@ngneat/svg-generator": "^2.0.0"
+  },
+  "svgGenerator": {
+    "outputPath": "./libs/svg",
+    "prefix": "",
+    "srcPath": "./libs/svg/assets",
+    "svgoConfig": {
+      "plugins": [
+        {
+          "removeDimensions": true,
+          "cleanupAttrs": true
+        }
+      ]
+    }
   }
 }
