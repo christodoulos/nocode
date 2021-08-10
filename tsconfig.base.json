@@ -16,7 +16,8 @@
     "baseUrl": ".",
     "paths": {
       "@nocode/auth": ["libs/auth/src/index.ts"],
-      "@nocode/ui": ["libs/ui/src/index.ts"]
+      "@nocode/ui": ["libs/ui/src/index.ts"],
+      "@nocode/svg/*": ["libs/svg/*"]
     }
   },
   "exclude": ["node_modules", "tmp"]
