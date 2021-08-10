@@ -7,6 +7,9 @@ import { AngularFireModule } from '@angular/fire';
 
 import { environment } from '../environments/environment';
 
+import { SvgIconsModule } from '@ngneat/svg-icon';
+import { playIcon } from '@nocode/svg/play';
+
 import { AppComponent } from './app.component';
 
 @NgModule({
@@ -28,6 +31,9 @@ import { AppComponent } from './app.component';
     AkitaNgRouterStoreModule,
     environment.production ? [] : AkitaNgDevtools.forRoot(),
     AngularFireModule.initializeApp(environment.firebase),
+    SvgIconsModule.forRoot({
+      missingIconFallback: playIcon,
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent],
