@@ -9,6 +9,7 @@ import { environment } from '../environments/environment';
 
 import { SvgIconsModule } from '@ngneat/svg-icon';
 import { questionMarkCircleIcon } from '@nocode/svg/question-mark-circle';
+import { DialogModule } from '@ngneat/dialog';
 
 import { AppComponent } from './app.component';
 
@@ -43,6 +44,7 @@ import { AppComponent } from './app.component';
       defaultSize: 'xl',
       missingIconFallback: questionMarkCircleIcon,
     }),
+    DialogModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],

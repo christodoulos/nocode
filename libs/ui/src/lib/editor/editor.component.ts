@@ -24,6 +24,19 @@ export interface Script {
   lang: string;
 }
 
+import { DialogService, DialogRef } from '@ngneat/dialog';
+
+@Component({
+  template: `
+    <h1>Hello World</h1>
+    <button (click)="ref.close()">Close</button>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class HelloWorldComponent {
+  constructor(public ref: DialogRef) {}
+}
+
 @Component({
   // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'editor',
@@ -39,6 +52,8 @@ export class EditorComponent implements AfterViewInit {
   editorView: EditorView | undefined;
   randomName = this.newRandomName();
   docChanged = false;
+
+  constructor(private dialog: DialogService) {}
 
   ngAfterViewInit(): void {
     if (this.editorElmRef) {
@@ -75,6 +90,12 @@ export class EditorComponent implements AfterViewInit {
   }
 
   onSave() {
+    this.dialog
+      .confirm({
+        title: 'Are you sure?',
+        body: 'This action cannot be undone.',
+      })
+      .afterClosed$.subscribe((confirmed) => console.log(confirmed));
     if (this.editorView) {
       this.script.emit({
         name: this.randomName,
