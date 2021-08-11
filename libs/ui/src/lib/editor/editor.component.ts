@@ -24,18 +24,8 @@ export interface Script {
   lang: string;
 }
 
-import { DialogService, DialogRef } from '@ngneat/dialog';
-
-@Component({
-  template: `
-    <h1>Hello World</h1>
-    <button (click)="ref.close()">Close</button>
-  `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-})
-export class HelloWorldComponent {
-  constructor(public ref: DialogRef) {}
-}
+import { DialogService } from '@ngneat/dialog';
+import { DialogWarningComponent } from '../dialog-warning/dialog-warning.component';
 
 @Component({
   // eslint-disable-next-line @angular-eslint/component-selector
@@ -90,20 +80,15 @@ export class EditorComponent implements AfterViewInit {
   }
 
   onSave() {
-    this.dialog
-      .confirm({
-        title: 'Are you sure?',
-        body: 'This action cannot be undone.',
-      })
-      .afterClosed$.subscribe((confirmed) => console.log(confirmed));
-    if (this.editorView) {
-      this.script.emit({
-        name: this.randomName,
-        code: this.editorView.state.doc.toJSON(),
-        lang: 'python',
-      });
-      this.randomName = this.newRandomName();
-    }
+    this.dialog.open(DialogWarningComponent, { size: 'sm' });
+    // if (this.editorView) {
+    //   this.script.emit({
+    //     name: this.randomName,
+    //     code: this.editorView.state.doc.toJSON(),
+    //     lang: 'python',
+    //   });
+    //   this.randomName = this.newRandomName();
+    // }
   }
 
   onNew() {

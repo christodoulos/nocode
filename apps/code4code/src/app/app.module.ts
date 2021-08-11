@@ -44,7 +44,30 @@ import { AppComponent } from './app.component';
       defaultSize: 'xl',
       missingIconFallback: questionMarkCircleIcon,
     }),
-    DialogModule.forRoot(),
+    DialogModule.forRoot({
+      sizes: {
+        sm: {
+          width: 600, // 300px
+          minHeight: 250, // 250px
+        },
+        md: {
+          width: '60vw',
+          height: '60vh',
+        },
+        lg: {
+          width: '90vw',
+          height: '90vh',
+        },
+        fullScreen: {
+          width: '100vw',
+          height: '100vh',
+        },
+        stretch: {
+          minHeight: 500,
+          maxHeight: '85%',
+        },
+      },
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent],
