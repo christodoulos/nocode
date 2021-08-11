@@ -1,13 +1,21 @@
 <div class="mt-1 flex flex-col">
-  <div class="text-xs flex items-center">
+  <div class="text-xs flex flex-row justify-between items-center bg-gray-300">
     <div>
-      <button (click)="onNew()" class="mr-2 p-1 button border">New</button>
-      <button (click)="onSave()" class="mr-2 p-1 button border">Save</button>
-      <button (click)="onOpen()" class="mr-2 p-1 button border">Open</button>
-      <button (click)="onRun()" class="mr-2 p-1 button border">Run</button>
+      <button (click)="onNew()" class="mr-2 p-1 button">
+        <svg-icon key="document"></svg-icon>
+      </button>
+      <button (click)="onSave()" class="mr-2 p-1 button">
+        <svg-icon key="download"></svg-icon>
+      </button>
+      <button (click)="onOpen()" class="mr-2 p-1 button">
+        <svg-icon key="upload"></svg-icon>
+      </button>
+      <button (click)="onRun()" class="mr-2 p-1 button">
+        <svg-icon key="run"></svg-icon>
+      </button>
     </div>
     <div>
-      <label for="filename" class="sr-only">File name</label>
+      <label for="filename" class="font-semibold">File name: </label>
       <input
         [(ngModel)]="randomName"
         type="text"
