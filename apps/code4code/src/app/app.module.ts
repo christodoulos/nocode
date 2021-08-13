@@ -8,7 +8,7 @@ import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
 
 import { SvgIconsModule } from '@ngneat/svg-icon';
-import { questionMarkCircleIcon } from '@nocode/svg/question-mark-circle';
+import { questionMarkCircleIcon } from '@nocode/svg/code4code/question-mark-circle';
 import { DialogModule } from '@ngneat/dialog';
 
 import { AppComponent } from './app.component';

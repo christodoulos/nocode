@@ -4,7 +4,7 @@ import { RouterModule, Route } from '@angular/router';
 import { canActivate, redirectLoggedInTo } from '@angular/fire/auth-guard';
 import { SvgIconsModule } from '@ngneat/svg-icon';
 
-import { owlIcon } from '@nocode/svg/owl';
+import { code4CodeIcons } from '@nocode/svg/code4code';
 
 import { UiModule } from '@nocode/ui';
 
@@ -32,7 +32,7 @@ export const landingRoutes: Route[] = [
   imports: [
     CommonModule,
     RouterModule.forChild(landingRoutes),
-    SvgIconsModule.forChild([owlIcon]),
+    SvgIconsModule.forChild([...code4CodeIcons]),
     UiModule,
   ],
 })

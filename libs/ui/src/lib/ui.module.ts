@@ -4,10 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { SvgIconsModule } from '@ngneat/svg-icon';
 
-import { editorIcons } from '@nocode/svg/editor';
-import { checkCircleIcon } from '@nocode/svg/check-circle';
-import { exclamationCircleIcon } from '@nocode/svg/exclamation-circle';
-import { questionMarkCircleIcon } from '@nocode/svg/question-mark-circle';
+import { code4CodeIcons } from '@nocode/svg/code4code';
 
 import { SimpleDropdownComponent } from './simple-dropdown/simple-dropdown.component';
 import { AvatarCircularComponent } from './avatar-circular/avatar-circular.component';
@@ -22,12 +19,7 @@ import { DialogAreyousureComponent } from './dialog-areyousure/dialog-areyousure
     CommonModule,
     FormsModule,
     RouterModule,
-    SvgIconsModule.forChild([
-      ...editorIcons,
-      checkCircleIcon,
-      exclamationCircleIcon,
-      questionMarkCircleIcon,
-    ]),
+    SvgIconsModule.forChild([...code4CodeIcons]),
   ],
   declarations: [
     SimpleDropdownComponent,
