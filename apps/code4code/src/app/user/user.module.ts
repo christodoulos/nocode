@@ -4,7 +4,9 @@ import { RouterModule, Route } from '@angular/router';
 import { AkitaNgEffectsModule } from '@datorama/akita-ng-effects';
 import { ReactiveFormsModule } from '@angular/forms';
 import { canActivate, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
+import { SvgIconsModule } from '@ngneat/svg-icon';
 
+import { code4CodeIcons } from '@nocode/svg/code4code';
 import { UiModule } from '@nocode/ui';
 
 import { UserLandingComponent } from './user-landing/user-landing.component';
@@ -43,6 +45,7 @@ export const userRoutes: Route[] = [
     RouterModule.forChild(userRoutes),
     AkitaNgEffectsModule.forFeature([C4CUserEffects, FirebaseUserEffects]),
     ReactiveFormsModule,
+    SvgIconsModule.forChild([...code4CodeIcons]),
     UiModule,
   ],
 })

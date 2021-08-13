@@ -115,8 +115,8 @@
     "svgoConfig": {
       "plugins": [
         {
-          "removeDimensions": false,
-          "cleanupAttrs": false
+          "removeDimensions": true,
+          "cleanupAttrs": true
         }
       ]
     }
