@@ -47,8 +47,8 @@ import { AppComponent } from './app.component';
     DialogModule.forRoot({
       sizes: {
         sm: {
-          width: 600, // 300px
-          minHeight: 250, // 250px
+          width: 400, // 300px
+          minHeight: 200, // 250px
         },
         md: {
           width: '60vw',

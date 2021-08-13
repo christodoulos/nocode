@@ -25,6 +25,7 @@ export interface Script {
 }
 
 import { DialogService } from '@ngneat/dialog';
+import { DialogAreyousureComponent } from '../dialog-areyousure/dialog-areyousure.component';
 import { DialogWarningComponent } from '../dialog-warning/dialog-warning.component';
 
 @Component({
@@ -80,21 +81,32 @@ export class EditorComponent implements AfterViewInit {
   }
 
   onSave() {
-    this.dialog.open(DialogWarningComponent, { size: 'sm' });
-    // if (this.editorView) {
-    //   this.script.emit({
-    //     name: this.randomName,
-    //     code: this.editorView.state.doc.toJSON(),
-    //     lang: 'python',
-    //   });
-    //   this.randomName = this.newRandomName();
-    // }
+    if (this.editorView) {
+      this.script.emit({
+        name: this.randomName,
+        code: this.editorView.state.doc.toJSON(),
+        lang: 'python',
+      });
+      this.docChanged = false;
+      // this.randomName = this.newRandomName();
+    }
   }
 
   onNew() {
-    console.log('On new click');
-    this.randomName = this.newRandomName();
-    this.clearEditorDocument();
+    if (this.docChanged)
+      this.dialog
+        .open(DialogAreyousureComponent, {
+          size: 'sm',
+          data: {
+            body: 'Your script is not saved! If you procceed your changes will be lost!',
+          },
+        })
+        .afterClosed$.subscribe((val) => {
+          if (val) {
+            this.randomName = this.newRandomName();
+            this.clearEditorDocument();
+          }
+        });
   }
 
   onOpen() {
