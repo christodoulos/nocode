@@ -15,6 +15,7 @@ import { SignupComponent } from './signup/signup.component';
 
 import { C4CUserEffects } from './state';
 import { FirebaseUserEffects } from '@nocode/auth';
+import { SandboxComponent } from './sandbox/sandbox.component';
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['']);
 
@@ -32,6 +33,11 @@ export const userRoutes: Route[] = [
   },
   { path: 'signup', component: SignupComponent },
   {
+    path: 'sandbox',
+    component: SandboxComponent,
+    ...canActivate(redirectUnauthorizedToLogin),
+  },
+  {
     path: '*',
     component: UserLandingComponent,
     ...canActivate(redirectUnauthorizedToLogin),
@@ -39,7 +45,12 @@ export const userRoutes: Route[] = [
 ];
 
 @NgModule({
-  declarations: [UserLandingComponent, UserTopbarComponent, SignupComponent],
+  declarations: [
+    UserLandingComponent,
+    UserTopbarComponent,
+    SignupComponent,
+    SandboxComponent,
+  ],
   imports: [
     CommonModule,
     RouterModule.forChild(userRoutes),
