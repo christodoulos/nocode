@@ -8,6 +8,7 @@ import { SvgIconsModule } from '@ngneat/svg-icon';
 
 import { code4CodeIcons } from '@nocode/svg/code4code';
 import { UiModule } from '@nocode/ui';
+import { VendorModule } from '@nocode/vendor';
 
 import { UserLandingComponent } from './user-landing/user-landing.component';
 import { UserTopbarComponent } from './user-topbar/user-topbar.component';
@@ -58,6 +59,7 @@ export const userRoutes: Route[] = [
     ReactiveFormsModule,
     SvgIconsModule.forChild([...code4CodeIcons]),
     UiModule,
+    VendorModule,
   ],
 })
 export class UserModule {}

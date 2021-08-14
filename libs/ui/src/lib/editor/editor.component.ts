@@ -26,7 +26,6 @@ export interface Script {
 
 import { DialogService } from '@ngneat/dialog';
 import { DialogAreyousureComponent } from '../dialog-areyousure/dialog-areyousure.component';
-import { DialogWarningComponent } from '../dialog-warning/dialog-warning.component';
 
 @Component({
   // eslint-disable-next-line @angular-eslint/component-selector
@@ -93,7 +92,7 @@ export class EditorComponent implements AfterViewInit {
   }
 
   onNew() {
-    if (this.docChanged)
+    if (this.docChanged) {
       this.dialog
         .open(DialogAreyousureComponent, {
           size: 'sm',
@@ -107,6 +106,7 @@ export class EditorComponent implements AfterViewInit {
             this.clearEditorDocument();
           }
         });
+    }
   }
 
   onOpen() {

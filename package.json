@@ -54,6 +54,7 @@
     "@ngneat/until-destroy": "^8.1.1",
     "@nrwl/angular": "12.5.8",
     "akita-ng-fire": "^6.0.3",
+    "brython-runner": "^1.0.10",
     "firebase": "^7.0 || ^8.0",
     "lodash": "^4.17.21",
     "rxjs": "~6.6.0",
