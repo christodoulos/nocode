@@ -2,6 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Route } from '@angular/router';
 import { canActivate, redirectLoggedInTo } from '@angular/fire/auth-guard';
+import { SvgIconsModule } from '@ngneat/svg-icon';
+
+import { code4CodeIcons } from '@nocode/svg/code4code';
 
 import { UiModule } from '@nocode/ui';
 
@@ -26,6 +29,11 @@ export const landingRoutes: Route[] = [
 
 @NgModule({
   declarations: [LandingComponent, LandingTopbarComponent],
-  imports: [CommonModule, RouterModule.forChild(landingRoutes), UiModule],
+  imports: [
+    CommonModule,
+    RouterModule.forChild(landingRoutes),
+    SvgIconsModule.forChild([...code4CodeIcons]),
+    UiModule,
+  ],
 })
 export class LandingModule {}

@@ -9,9 +9,7 @@
       "architect": {
         "build": {
           "builder": "@nrwl/angular:ng-packagr-lite",
-          "outputs": [
-            "dist/libs/auth"
-          ],
+          "outputs": ["dist/libs/auth"],
           "options": {
             "project": "libs/auth/ng-package.json"
           },
@@ -27,9 +25,7 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/auth"
-          ],
+          "outputs": ["coverage/libs/auth"],
           "options": {
             "jestConfig": "libs/auth/jest.config.js",
             "passWithNoTests": true
@@ -54,9 +50,7 @@
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
-          "outputs": [
-            "{options.outputPath}"
-          ],
+          "outputs": ["{options.outputPath}"],
           "options": {
             "outputPath": "dist/apps/code4code",
             "index": "apps/code4code/src/index.html",
@@ -67,9 +61,7 @@
               "apps/code4code/src/favicon.ico",
               "apps/code4code/src/assets"
             ],
-            "styles": [
-              "apps/code4code/src/styles.css"
-            ],
+            "styles": ["apps/code4code/src/styles.css"],
             "scripts": []
           },
           "configurations": {
@@ -134,9 +126,7 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/apps/code4code"
-          ],
+          "outputs": ["coverage/apps/code4code"],
           "options": {
             "jestConfig": "apps/code4code/jest.config.js",
             "passWithNoTests": true
@@ -169,9 +159,7 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "apps/code4code-e2e/**/*.{js,ts}"
-            ]
+            "lintFilePatterns": ["apps/code4code-e2e/**/*.{js,ts}"]
           }
         }
       }
@@ -184,9 +172,7 @@
       "architect": {
         "build": {
           "builder": "@nrwl/angular:ng-packagr-lite",
-          "outputs": [
-            "dist/libs/ui"
-          ],
+          "outputs": ["dist/libs/ui"],
           "options": {
             "project": "libs/ui/ng-package.json"
           },
@@ -202,9 +188,7 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/ui"
-          ],
+          "outputs": ["coverage/libs/ui"],
           "options": {
             "jestConfig": "libs/ui/jest.config.js",
             "passWithNoTests": true
@@ -213,9 +197,47 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
+            "lintFilePatterns": ["libs/ui/src/**/*.ts", "libs/ui/src/**/*.html"]
+          }
+        }
+      }
+    },
+    "vendor": {
+      "projectType": "library",
+      "root": "libs/vendor",
+      "sourceRoot": "libs/vendor/src",
+      "prefix": "nocode",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:ng-packagr-lite",
+          "outputs": ["dist/libs/vendor"],
+          "options": {
+            "project": "libs/vendor/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/vendor/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/vendor/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/vendor"],
+          "options": {
+            "jestConfig": "libs/vendor/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
             "lintFilePatterns": [
-              "libs/ui/src/**/*.ts",
-              "libs/ui/src/**/*.html"
+              "libs/vendor/src/**/*.ts",
+              "libs/vendor/src/**/*.html"
             ]
           }
         }
