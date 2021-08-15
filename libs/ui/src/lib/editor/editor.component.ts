@@ -37,6 +37,9 @@ import { DialogAreyousureComponent } from '../dialog-areyousure/dialog-areyousur
 export class EditorComponent implements AfterViewInit {
   @ViewChild('editor') editorElmRef: ElementRef | undefined;
   @Output() script: EventEmitter<Script> = new EventEmitter<Script>();
+  @Output() run: EventEmitter<Array<string>> = new EventEmitter<
+    Array<string>
+  >();
   @Output() newScript = new EventEmitter();
   editorDiv: HTMLDivElement | undefined;
   editorView: EditorView | undefined;
@@ -114,6 +117,8 @@ export class EditorComponent implements AfterViewInit {
   }
 
   onRun() {
-    console.log('On run click');
+    if (this.editorView) {
+      this.run.emit(this.editorView.state.doc.toJSON());
+    }
   }
 }

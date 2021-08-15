@@ -4,6 +4,7 @@ import {
   AfterViewInit,
   ViewChild,
   ElementRef,
+  Input,
 } from '@angular/core';
 
 @Component({
@@ -17,6 +18,9 @@ export class BrythonRunnerComponent implements AfterViewInit {
   @ViewChild('brython_runner') iframeElmRef: ElementRef | undefined;
   iframe: HTMLIFrameElement | undefined;
   iwindow: Window | null | undefined;
+  @Input() set script(value: string) {
+    this.iwindow?.postMessage(value, this.iwindow.location.href);
+  }
 
   ngAfterViewInit(): void {
     if (this.iframeElmRef) {

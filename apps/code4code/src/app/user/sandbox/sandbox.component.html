@@ -1,2 +1,8 @@
-<editor (script)="onScript($event)"></editor>
-<brython-runner></brython-runner>
+<div class="flex flex-row">
+  <div class="w-2/3">
+    <editor (script)="onScript($event)" (run)="onRun($event)"></editor>
+  </div>
+  <div class="w-1/3">
+    <brython-runner [script]="sandScript"></brython-runner>
+  </div>
+</div>
