@@ -1,3 +1,272 @@
-<p>Welcome {{ displayName$ | async }}</p>
+<!-- This example requires Tailwind CSS v2.0+ -->
+<div>
+  <h2 class="text-lg font-medium text-gray-900">
+    Welcome {{ displayName$ | async }}
+  </h2>
+  <p class="mt-1 text-sm text-gray-500">
+    You have subscribed as a
+    <span class="font-semibold">{{ role$ | async }}</span
+    >. Please select an action.
+  </p>
+  <ul
+    role="list"
+    class="
+      mt-6
+      border-t border-b border-gray-200
+      py-6
+      grid grid-cols-1
+      gap-6
+      sm:grid-cols-2
+    "
+  >
+    <li class="flow-root">
+      <div
+        class="
+          relative
+          -m-2
+          p-2
+          flex
+          items-center
+          space-x-4
+          rounded-xl
+          hover:bg-gray-50
+          focus-within:ring-2 focus-within:ring-indigo-500
+        "
+      >
+        <div
+          class="
+            flex-shrink-0 flex
+            items-center
+            justify-center
+            h-16
+            w-16
+            rounded-lg
+            bg-pink-500
+          "
+        >
+          <svg-icon key="code" class="h-6 w-6 text-white"></svg-icon>
+        </div>
+        <div>
+          <h3 class="text-sm font-medium text-gray-900">
+            <a class="focus:outline-none" routerLink="/user/sandbox">
+              <span class="absolute inset-0" aria-hidden="true"></span>
+              Script Sandbox<span aria-hidden="true"> &rarr;</span>
+            </a>
+          </h3>
+          <p class="mt-1 text-sm text-gray-500">Open a new script sandbox.</p>
+        </div>
+      </div>
+    </li>
+
+    <li class="flow-root">
+      <div
+        class="
+          relative
+          -m-2
+          p-2
+          flex
+          items-center
+          space-x-4
+          rounded-xl
+          hover:bg-gray-50
+          focus-within:ring-2 focus-within:ring-indigo-500
+        "
+      >
+        <div
+          class="
+            flex-shrink-0 flex
+            items-center
+            justify-center
+            h-16
+            w-16
+            rounded-lg
+            bg-yellow-500
+          "
+        >
+          <!-- Heroicon name: outline/calendar -->
+          <svg-icon key="calendar" class="h-6 w-6 text-white"></svg-icon>
+        </div>
+        <div>
+          <h3 class="text-sm font-medium text-gray-900">
+            <a href="#" class="focus:outline-none">
+              <span class="absolute inset-0" aria-hidden="true"></span>
+              Create a Calendar<span aria-hidden="true"> &rarr;</span>
+            </a>
+          </h3>
+          <p class="mt-1 text-sm text-gray-500">Create a Calendar.</p>
+        </div>
+      </div>
+    </li>
+
+    <li class="flow-root">
+      <div
+        class="
+          relative
+          -m-2
+          p-2
+          flex
+          items-center
+          space-x-4
+          rounded-xl
+          hover:bg-gray-50
+          focus-within:ring-2 focus-within:ring-indigo-500
+        "
+      >
+        <div
+          class="
+            flex-shrink-0 flex
+            items-center
+            justify-center
+            h-16
+            w-16
+            rounded-lg
+            bg-green-500
+          "
+        >
+          <!-- Heroicon name: outline/photograph -->
+          <svg-icon key="photograph" class="h-6 w-6 text-white"></svg-icon>
+        </div>
+        <div>
+          <h3 class="text-sm font-medium text-gray-900">
+            <a href="#" class="focus:outline-none">
+              <span class="absolute inset-0" aria-hidden="true"></span>
+              Create a Gallery<span aria-hidden="true"> &rarr;</span>
+            </a>
+          </h3>
+          <p class="mt-1 text-sm text-gray-500">Create a Gallery.</p>
+        </div>
+      </div>
+    </li>
+
+    <li class="flow-root">
+      <div
+        class="
+          relative
+          -m-2
+          p-2
+          flex
+          items-center
+          space-x-4
+          rounded-xl
+          hover:bg-gray-50
+          focus-within:ring-2 focus-within:ring-indigo-500
+        "
+      >
+        <div
+          class="
+            flex-shrink-0 flex
+            items-center
+            justify-center
+            h-16
+            w-16
+            rounded-lg
+            bg-blue-500
+          "
+        >
+          <!-- Heroicon name: outline/view-boards -->
+          <svg-icon key="view-boards" class="h-6 w-6 text-white"></svg-icon>
+        </div>
+        <div>
+          <h3 class="text-sm font-medium text-gray-900">
+            <a href="#" class="focus:outline-none">
+              <span class="absolute inset-0" aria-hidden="true"></span>
+              Create a Board<span aria-hidden="true"> &rarr;</span>
+            </a>
+          </h3>
+          <p class="mt-1 text-sm text-gray-500">Create a Board.</p>
+        </div>
+      </div>
+    </li>
+
+    <li class="flow-root">
+      <div
+        class="
+          relative
+          -m-2
+          p-2
+          flex
+          items-center
+          space-x-4
+          rounded-xl
+          hover:bg-gray-50
+          focus-within:ring-2 focus-within:ring-indigo-500
+        "
+      >
+        <div
+          class="
+            flex-shrink-0 flex
+            items-center
+            justify-center
+            h-16
+            w-16
+            rounded-lg
+            bg-indigo-500
+          "
+        >
+          <!-- Heroicon name: outline/table -->
+          <svg-icon key="table" class="h-6 w-6 text-white"></svg-icon>
+        </div>
+        <div>
+          <h3 class="text-sm font-medium text-gray-900">
+            <a href="#" class="focus:outline-none">
+              <span class="absolute inset-0" aria-hidden="true"></span>
+              Create a Table<span aria-hidden="true"> &rarr;</span>
+            </a>
+          </h3>
+          <p class="mt-1 text-sm text-gray-500">Create a Table.</p>
+        </div>
+      </div>
+    </li>
+
+    <li class="flow-root">
+      <div
+        class="
+          relative
+          -m-2
+          p-2
+          flex
+          items-center
+          space-x-4
+          rounded-xl
+          hover:bg-gray-50
+          focus-within:ring-2 focus-within:ring-indigo-500
+        "
+      >
+        <div
+          class="
+            flex-shrink-0 flex
+            items-center
+            justify-center
+            h-16
+            w-16
+            rounded-lg
+            bg-purple-500
+          "
+        >
+          <!-- Heroicon name: outline/clock -->
+          <svg-icon key="clock" class="h-6 w-6 text-white"></svg-icon>
+        </div>
+        <div>
+          <h3 class="text-sm font-medium text-gray-900">
+            <a href="#" class="focus:outline-none">
+              <span class="absolute inset-0" aria-hidden="true"></span>
+              Create a Timeline<span aria-hidden="true"> &rarr;</span>
+            </a>
+          </h3>
+          <p class="mt-1 text-sm text-gray-500">Create a Timeline.</p>
+        </div>
+      </div>
+    </li>
+  </ul>
+  <div class="mt-4 flex">
+    <a
+      href="#"
+      class="text-sm font-medium text-indigo-600 hover:text-indigo-500"
+      >Or start from an empty project<span aria-hidden="true"> &rarr;</span></a
+    >
+  </div>
+</div>
+
+<!-- <p>Welcome {{ displayName$ | async }}</p>
 <p>Your role is {{ role$ | async }}</p>
-<editor></editor>
+ -->
