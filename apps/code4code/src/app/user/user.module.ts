@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Route } from '@angular/router';
 import { AkitaNgEffectsModule } from '@datorama/akita-ng-effects';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { canActivate, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
 import { SvgIconsModule } from '@ngneat/svg-icon';
 
@@ -56,6 +56,7 @@ export const userRoutes: Route[] = [
     CommonModule,
     RouterModule.forChild(userRoutes),
     AkitaNgEffectsModule.forFeature([C4CUserEffects, FirebaseUserEffects]),
+    FormsModule,
     ReactiveFormsModule,
     SvgIconsModule.forChild([...code4CodeIcons]),
     UiModule,

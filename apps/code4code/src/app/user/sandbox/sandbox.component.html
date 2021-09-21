@@ -1,8 +1,17 @@
 <div class="flex flex-row">
   <div class="w-2/3">
-    <editor (script)="onScript($event)" (run)="onRun($event)"></editor>
+    <nocode-codemirror
+      [(ngModel)]="defaults"
+      (ngModelChange)="handleChange($event)"
+    ></nocode-codemirror>
+    <editor
+      [language]="'python'"
+      (script)="onScript($event)"
+      (run)="onRun($event)"
+      class="editor mr-1"
+    ></editor>
   </div>
   <div class="w-1/3">
-    <brython-runner [script]="sandScript"></brython-runner>
+    <brython-runner [script]="sandScript" class="runner"></brython-runner>
   </div>
 </div>

@@ -6,6 +6,7 @@ import {
   ElementRef,
   Output,
   EventEmitter,
+  Input,
 } from '@angular/core';
 import { EditorState, EditorView, basicSetup } from '@codemirror/basic-setup';
 import { python } from '@codemirror/lang-python';
@@ -36,6 +37,7 @@ import { DialogAreyousureComponent } from '../dialog-areyousure/dialog-areyousur
 })
 export class EditorComponent implements AfterViewInit {
   @ViewChild('editor') editorElmRef: ElementRef | undefined;
+  @Input() language: string | undefined;
   @Output() script: EventEmitter<Script> = new EventEmitter<Script>();
   @Output() run: EventEmitter<Array<string>> = new EventEmitter<
     Array<string>
@@ -43,8 +45,9 @@ export class EditorComponent implements AfterViewInit {
   @Output() newScript = new EventEmitter();
   editorDiv: HTMLDivElement | undefined;
   editorView: EditorView | undefined;
-  randomName = this.newRandomName();
+  randomName = '';
   docChanged = false;
+  docSaved = false;
 
   constructor(private dialog: DialogService) {}
 
@@ -55,7 +58,7 @@ export class EditorComponent implements AfterViewInit {
         state: EditorState.create({
           extensions: [
             basicSetup,
-            python(),
+            this.setLanguage(),
             EditorView.updateListener.of((v: ViewUpdate) => {
               if (v.docChanged) {
                 this.docChanged = true;
@@ -65,13 +68,36 @@ export class EditorComponent implements AfterViewInit {
         }),
         parent: this.editorDiv,
       });
+      this.randomName = this.newRandomName();
+    }
+  }
+
+  setLanguage() {
+    switch (this.language) {
+      case 'python':
+        return python();
+
+      default:
+        return python();
+    }
+  }
+
+  setExtention(): string {
+    switch (this.language) {
+      case 'python':
+        return 'py';
+
+      default:
+        return '';
     }
   }
 
   newRandomName() {
-    return uniqueNamesGenerator({
+    const uname = uniqueNamesGenerator({
       dictionaries: [adjectives, colors, animals],
     });
+    const ext = this.setExtention();
+    return `${uname}.${ext}`;
   }
 
   clearEditorDocument() {

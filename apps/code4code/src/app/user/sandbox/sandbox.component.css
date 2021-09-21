@@ -1,0 +1,7 @@
+.runner {
+  z-index: 0;
+}
+
+.editor {
+  z-index: 10;
+}
