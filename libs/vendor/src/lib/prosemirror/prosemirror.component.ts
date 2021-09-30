@@ -23,20 +23,17 @@ export class ProsemirrorComponent implements AfterViewInit {
   @ViewChild('editor') editorElmRef!: ElementRef;
   @ViewChild('content') contentElmRef!: ElementRef;
 
-  editorDiv: HTMLDivElement;
-  contentDiv: HTMLDivElement;
+  editorDiv!: HTMLDivElement;
+  contentDiv!: HTMLDivElement;
   editorView: EditorView | undefined;
   mySchema = new Schema({
     nodes: addListNodes(schema.spec.nodes, 'paragraph block*', 'block'),
     marks: schema.spec.marks,
   });
 
-  constructor() {
+  ngAfterViewInit(): void {
     this.editorDiv = this.editorElmRef.nativeElement;
     this.contentDiv = this.contentElmRef.nativeElement;
-  }
-
-  ngAfterViewInit(): void {
     this.editorView = new EditorView(this.editorDiv, {
       state: EditorState.create({
         doc: DOMParser.fromSchema(this.mySchema).parse(this.contentDiv),
